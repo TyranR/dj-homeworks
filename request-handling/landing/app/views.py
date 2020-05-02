@@ -15,7 +15,7 @@ def index(request):
     ab_test_arg = request.GET.get('from-landing')
     counter_click[ab_test_arg] += 1
     print(counter_click)
-    return render(None, 'index.html')
+    return render('index.html', None)
 
 
 def landing(request):
@@ -27,11 +27,11 @@ def landing(request):
     counter_show[ab_test_arg] += 1
     print(counter_show)
     if ab_test_arg == 'original':
-        return render(None, 'landing.html')
+        return render('landing.html', None)
     elif ab_test_arg == 'test':
-        return render(None, 'landing_alternate.html')
+        return render('landing_alternate.html', None)
     else:
-        return render(None, 'index.html')
+        return render('index.html', None)
 
 
 def stats(request):
