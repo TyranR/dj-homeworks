@@ -30,7 +30,7 @@ def bus_stations(request):
     next_page_url = urllib.parse.urlencode({'page': next_page_number})
     prev_page_url = reverse('bus_stations') + '?' + str(prev_page_url)
     next_page_url = reverse('bus_stations') + '?' + str(next_page_url)
-    return render(None, 'index.html', context={
+    return render(request, 'index.html', context={
         'bus_stations': articles,
         'current_page': current_page,
         'prev_page_url': prev_page_url,
