@@ -39,8 +39,16 @@ def stats(request):
     # Чтобы отличить с какой версии лендинга был переход
     # проверяйте GET параметр marker который может принимать значения test и original
     # Для вывода результат передайте в следующем формате:
-    original_conversion = counter_click['original']/counter_show['original']
-    test_conversion = counter_click['test']/counter_show['test']
+    try:
+        original_conversion = counter_click['original']/counter_show['original']
+    except ZeroDivisionError:
+        print("На ноль делить нельзя")
+        original_conversion = 0
+    try:
+        test_conversion = counter_click['test']/counter_show['test']
+    except ZeroDivisionError:
+        print("На ноль делить нельзя")
+        test_conversion = 0
 
     return render(None, 'stats.html', context={
         'test_conversion': test_conversion,
