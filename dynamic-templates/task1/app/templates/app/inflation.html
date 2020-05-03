@@ -18,9 +18,10 @@
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
         <table border='1'>
-          {% for year in data_dict %}
+          {% for year in context %}
           <tr>
             {% for month in year %}
+              month
               {% if forloop.last %}
                 <td bgcolor='grey'> {{ month }}</td>
               {% elif month < 0 %}
