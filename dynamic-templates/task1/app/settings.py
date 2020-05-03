@@ -67,6 +67,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+FILE_CSV = os.path.join(BASE_DIR, 'inflation_russia.csv')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
