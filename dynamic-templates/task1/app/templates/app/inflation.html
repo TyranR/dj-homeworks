@@ -18,12 +18,13 @@
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
         <table border='1'>
-          {% for year in context %}
+          {% for year in rows %}
           <tr>
             {% for month in year %}
-              month
               {% if forloop.last %}
-                <td bgcolor='grey'> {{ month }}</td>
+                <td bgcolor='grey'>{{ month }}</td>
+              {% elif forloop.first %}
+                <td> {{ month }}</td>
               {% elif month < 0 %}
                 <td bgcolor="lime"> {{ month }} </td>
               {% elif month > 1 and month < 2  %}

@@ -1,11 +1,6 @@
 from django.shortcuts import render
 import csv
 from app.settings import *
-from pprint import pprint
-import copy
-
-with open(FILE_CSV, newline='', encoding='utf_8_sig') as csvfile:
-    data_dict = csv.DictReader(csvfile)
 
 with open(FILE_CSV, newline='', encoding='utf_8_sig') as csvfile:
     data_list = csv.reader(csvfile, delimiter=';')
@@ -15,17 +10,19 @@ with open(FILE_CSV, newline='', encoding='utf_8_sig') as csvfile:
 def inflation_view(request):
     template_name = 'app/inflation.html'
     context = {}
-    temp_dict = {}
-    # with open(FILE_CSV, newline='', encoding='utf_8_sig') as csvfile:
-    #     data_dict = csv.DictReader(csvfile, delimiter=';')
-    #     for each in data_dict:
-    #         id = each['Год']
-    #         temp_dict.update(id: each)
-    #         context.update[{each['Год']}: temp_dict]
-    #     pprint(context)
-    #     print(type(context))
+    year_list = list()
     for year in data_list:
-        id = year[0]
-        context[id] = year
-    pprint(context)
+        temp_list = []
+        for month in year:
+            try:
+                month = int(month)
+                temp_list.append(month)
+            except:
+                try:
+                    month = float(month)
+                    temp_list.append(month)
+                except:
+                    temp_list.append(month)
+        year_list.append(temp_list)
+    context['rows'] = year_list
     return render(request, template_name, context)
