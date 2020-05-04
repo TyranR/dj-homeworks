@@ -16,5 +16,14 @@ class Command(BaseCommand):
             next(phone_reader)
 
             for line in phone_reader:
+                mobile = Phone()
+                mobile.name = line[1]
+                mobile.image = line[2]
+                mobile.price = line[3]
+                mobile.release_date = line[4]
+                mobile.lte_exists = line[4]
+                mobile.prepopulated_fields = {'slug': ("name",)}
+                mobile.save()
+
                 # TODO: Добавьте сохранение модели
                 pass
