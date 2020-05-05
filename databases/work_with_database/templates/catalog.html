@@ -9,11 +9,18 @@
         </div>
 
         <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
+            <h7>Сортировать по: <a href="http://127.0.0.1:8000/catalog/?sort=name"> Наименованию</a>
+                <a href="http://127.0.0.1:8000/catalog/?sort=max-price"> Максимальной цене</a>
+                <a href="http://127.0.0.1:8000/catalog/?sort=min-price"> Минимальной цене</a>
+            </h7>
         </div>
 
-        <div class="content">
-            {# Здесь должен отображаться каталог с телефонами #}
+        <a class="content">
+                {% for each in phones %}
+                    <a href="http://127.0.0.1:8000/catalog/{{ each.slug }}"  > <h1>{{ each.title }}</h1> </a>
+                    <h5><b>Стоимость: {{ each.price }}руб</b></h5>
+                    <img src="{{ each.image }}">
+                {% endfor %}
         </div>
     </div>
 {% endblock %}

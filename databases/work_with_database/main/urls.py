@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 import phones.views
+from phones.views import base_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', base_view, name='base'),
     path('catalog/', phones.views.show_catalog),
-    path('catalog/<slug:slug>/', phones.views.show_product),
+    path('catalog/<slug:slug>', phones.views.show_product),
 ]
