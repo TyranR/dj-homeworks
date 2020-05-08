@@ -20,7 +20,7 @@ def show_catalog(request):
 
 def show_product(request, slug):
     template = 'product.html'
-    all_entries = Phone.objects.filter(slug='samsung-galaxy-edge-2')
+    all_entries = Phone.objects.filter(slug=slug)
     context = {'telephone': all_entries}
     print(context)
     return render(request, template, context)
