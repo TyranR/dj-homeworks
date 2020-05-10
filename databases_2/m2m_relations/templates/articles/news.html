@@ -15,8 +15,15 @@
         <p class="card-text">{{ article.text }}</p>
         {% for scope in article.scopes.all %}
           {% for each in related %}
-            {% if each.article == article and each.badge == scope %}
-              <span class="badge {% if each.main == True %}badge-primary{% else %}badge-secondary{% endif %}">{{ scope.title }}</span>
+            {% if each.article == article and each.badge == scope and each.main == True %}
+              <span class="badge badge-primary">{{ scope.title }}</span>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for scope in article.scopes.all %}
+          {% for each in related %}
+            {% if each.article == article and each.badge == scope and each.main == False %}
+              <span class="badge badge-secondary">{{ scope.title }}</span>
             {% endif %}
           {% endfor %}
         {% endfor %}
